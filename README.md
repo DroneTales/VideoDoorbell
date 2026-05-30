@@ -1,6 +1,6 @@
 # Smart video doorbell for Apple Home
 
-In this repository you will find a firmware for a smart video doorbell for Apple Home. Should you have any questions please do not hesitate to contact me at gully.horror0w@icloud.com.  
+In this repository, you will find firmware for a smart video doorbell for Apple Home. Should you have any questions, please do not hesitate to contact me at gully.horror0w@icloud.com.  
  
 **Required components**
 
@@ -32,11 +32,11 @@ In this repository you will find a firmware for a smart video doorbell for Apple
 
 ## HomeBridge setup
 
-In this chapter you will find a detailed instructions on how to setup your HomeBridge to work with this device.  
+In this chapter, you will find detailed instructions on how to set up your HomeBridge to work with this device.  
 
 ### Setting up the MQTT broker
 
-Connect to your HomeBridge device using SSH and execute the following commands:  
+Connect to your HomeBridge device using SSH, and execute the following commands:  
 
 `sudo apt-get update`  
 `sudo apt-get upgrade`  
@@ -63,21 +63,21 @@ allow_anonymous false
 password_file /etc/mosquitto/passwd
 ```
 
-Create new MQTT broker user. To do that execute the following command:  
+Create a new MQTT broker user. To do that, execute the following command:  
 
 `sudo mosquitto_passwd -c /etc/mosquitto/passwd mqtt_user_name`
 
-Provide a user name you would like instead of **mqtt_user_name** (for example: mqttuser). When requested provide a new user's password.  
+Provide a username you would like instead of *mqtt_user_name* (for example: mqttuser). When requested, provide the new user's password.  
 
-Start MQTT broker by executing the following command:  
+Start the MQTT broker by executing the following command:  
 
 `sudo systemctl restart mosquitto`
 
 ### Setting up the HomeBridge
 
-Connect to your HomeBridge by Web interface. Select "Edit JSON". 
+Connect to your HomeBridge via the web interface. Select *Edit JSON*.  
 
-In the **CameraUI** section update the MQTT settings as below:
+In the *CameraUI* section, update the MQTT settings as below:  
 
 ```
 "mqtt": {
@@ -90,9 +90,9 @@ In the **CameraUI** section update the MQTT settings as below:
 },
 ```
 
-Replace **mqtt_user_name** and **mqtt_password** with just created user name and password.  
+Replace *mqtt_user_name* and *mqtt_password* with the username and password you just created.  
 
-Scroll down to the **Cameras** and find the **mqtt** section. Change it as shown below. If there is no such section then add it right after **videoanalysis**.  
+Scroll down to the *Camera* section and find the *mqtt* section. Change it as shown below. If there is no such section, then add it right after *videoanalysis*.  
 
 ```
 "mqtt": {
@@ -101,16 +101,17 @@ Scroll down to the **Cameras** and find the **mqtt** section. Change it as shown
 },
 ```
 
-Now add the following line right before **videoConfig**:
+Now add the following line right before *videoConfig*:  
 
 `"doorbell": true,`
 
-**Do not forget to provide correct MQTT broker user name and password in the firmware**.
+**Do not forget to provide the correct MQTT broker username and password in the firmware.**.  
 
-DONE.
+DONE.  
+
 ## Support the author
 
-If you like what I am doing you can support me using one of the link below:
+If you like what I am doing, you can support me using one of the links below:  
 
 **BuyMeACoffee**: https://buymeacoffee.com/dronetales  
 **Boosty**: https://boosty.to/drone_tales/donate  
