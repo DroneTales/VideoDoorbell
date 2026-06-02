@@ -29,21 +29,18 @@ EVENT_SOUND_DETECT = "EVENT: SOUND detect."
 # These constants configure the connection to the MQTT broker (Mosquitto, etc.).
 # The MQTT client uses them when establishing and authenticating the connection.
 
-# Hostname or IP address of the MQTT broker.
-MQTT_SERVER = "192.168.1.13"
-
 # TCP port on which the MQTT broker is listening (default 1883 for unencrypted MQTT).
 MQTT_PORT = 1883
+# Hostname or IP address of the MQTT broker.
+MQTT_SERVER = "mqtt_server_ip"
+# Username for MQTT broker authentication (if required).
+MQTT_USER_NAME = "mqtt_user_name"
+# Password for MQTT broker authentication.
+MQTT_PASSWORD = "mqtt_password"
 
 # Unique client identifier sent to the broker.
 # It should be unique on the network to avoid session conflicts.
 MQTT_CLIENT_ID = "DroneTales Camera Control"
-
-# Username for MQTT broker authentication (if required).
-MQTT_USER_NAME = "dronetales"
-
-# Password for MQTT broker authentication.
-MQTT_PASSWORD = "dronetales"
 
 
 # =============================================================================
