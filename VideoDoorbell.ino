@@ -16,32 +16,12 @@
 //   - Programmer: Esptool
 // =====================================================================================
 
+#include "config.h"
+#include "pins.h"
+
 #include <HomeSpan.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
-
-
-/**************************************************************************************/
-/*                                   MQTT constants                                   */
-
-// MQTT server port.
-constexpr uint16_t MQTT_PORT = 1883;
-// MQTT server address.
-const char* const MQTT_SERVER = "mqtt_server_ip";
-// MQTT server user name.
-const char* const MQTT_USER_NAME = "mqtt_user_name";
-// MQTT server password.
-const char* const MQTT_PASSWORD = "mqtt_password";
-
-// MQTT client ID.
-const char* const MQTT_DOORBELL_CLIENT_ID = "DroneTales Doorbell";
-
-// Camera UI MQTT doorbell topic.
-const char* const MQTT_DOORBELL_TOPIC = "doorcam/bell";
-// Camera UI MQTT doorbell ring message.
-const char* const MQTT_DOORBELL_MESSAGE = "RING";
-
-/**************************************************************************************/
 
 
 /**************************************************************************************/
@@ -51,22 +31,6 @@ const char* const MQTT_DOORBELL_MESSAGE = "RING";
 constexpr uint32_t BELL_BUTTON_SIGNAL_DURATION = 500;
 // The doorbell play signal duration in milliseconds.
 constexpr uint32_t BELL_SIGNAL_DURATION = 250;
-
-/**************************************************************************************/
-
-
-/**************************************************************************************/
-/*                                  Pins  definition                                  */
-
-// HomeSpan status LED pin.
-#define STATUS_LED_PIN      GPIO_NUM_8
-// HomeSpan control button pin.
-#define CONTROL_PIN         GPIO_NUM_9
-
-// The doorbell button input pin (radio signal)
-#define BELL_BUTTON_PIN     GPIO_NUM_3
-// The doorbell signal pin (wired to the sound chip)
-#define BELL_SIGNAL_PIN     GPIO_NUM_10
 
 /**************************************************************************************/
 
