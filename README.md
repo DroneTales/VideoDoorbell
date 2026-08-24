@@ -1,20 +1,20 @@
-# Smart video doorbell for Apple Home
+# Видео дверной звонок для Apple Home
 
-In this repository, you will find firmware for a smart video doorbell for Apple Home. Should you have any questions, please do not hesitate to contact me at gully.horror0w@icloud.com.  
+Здесь вы найдете прошивку для умного дверного видео звонка, совместимого с Apple Home. Если у вас возникнут какие либо вопросы, вы можете задать их в моем [Телеграм канале](t.me/drone_tales).  
  
-**Required components**
+**Используемые компоненты**
 
-- RF doorbell - 1 pcs.
-- ESP32C3FN4 Super Mini - 1 pcs.
-- 5V 1A power supply - 1 pcs.
+- Беспроводно звонок - 1 шт.
+- ESP32C3FN4 Super Mini - 1 шт.
+- Блок питания на 5V 1A - 1 шт.
 
-**Required Arduino libraries**
+**Использумые библиотеки Arduino**
 
 - esp32 by Espressif Systems (board)
 - HomeSpan
 - PubSubClient
  
-**Arduino IDE settings**
+**Настройки Arduino IDE**
 
 - Board: ESP32C3 Dev BModule
 - ESP CDC On Boot: Enabled
@@ -30,13 +30,13 @@ In this repository, you will find firmware for a smart video doorbell for Apple 
 - Zigbee Mode: Disabled
 - Programmer: Esptool
 
-## HomeBridge setup
+## Найстройка HomeBridge
 
-In this chapter, you will find detailed instructions on how to set up your HomeBridge to work with this device.  
+В этой части вы найдете детальные инструкции по настройке HomeBridge для работы с этим устройством.  
 
-### Setting up the MQTT broker
+### Настройка MQTT брокера
 
-Connect to your HomeBridge device using SSH, and execute the following commands:  
+Подключитесь к своему HomeBridge по SSH и выполните следующие команды:  
 
 `sudo apt-get update`  
 `sudo apt-get upgrade`  
@@ -44,7 +44,7 @@ Connect to your HomeBridge device using SSH, and execute the following commands:
 `sudo systemctl enable mosquitto`  
 `sudo nano /etc/mosquitto/mosquitto.conf`
 
-The last command opens the MQTT broker configuration file. Remove (delete) all the lines from the file and insert the following line instead:  
+Последняя команда откроет файл конфигурации MQTT брокера. Полность/ удалите все содержимое этого файла и вставьте следующие строки:  
 
 ```
 per_listener_settings true
@@ -63,21 +63,21 @@ allow_anonymous false
 password_file /etc/mosquitto/passwd
 ```
 
-Create a new MQTT broker user. To do that, execute the following command:  
+Тепепь необходимо сохдать нового пользователя для MQTT брокера. Для этого выполните следующую команду:  
 
 `sudo mosquitto_passwd -c /etc/mosquitto/passwd mqtt_user_name`
 
-Provide a username you would like instead of *mqtt_user_name* (for example: mqttuser). When requested, provide the new user's password.  
+Вместо *mqtt_user_name* укажите новое имя пользователя (на пример: mqttuser). Введите новый пароль для только что созданного пользователя, когда появится соответствующий запрос.  
 
-Start the MQTT broker by executing the following command:  
+Запустите MQTT брокер следующей командой:  
 
 `sudo systemctl restart mosquitto`
 
-### Setting up the HomeBridge
+### Настройка HomeBridge
 
-Connect to your HomeBridge via the web interface. Select *Edit JSON*.  
+Подключитесь к своему HomeBridge через web интерфейс. Выберите *Edit JSON*.  
 
-In the *CameraUI* section, update the MQTT settings as below:  
+В разделе *CameraUI*, обновите настройки MQTT как показано ниже:  
 
 ```
 "mqtt": {
@@ -90,9 +90,9 @@ In the *CameraUI* section, update the MQTT settings as below:
 },
 ```
 
-Replace *mqtt_user_name* and *mqtt_password* with the username and password you just created.  
+Замените *mqtt_user_name* и *mqtt_password* на имя и пароль только что созданного пользователя.  
 
-Scroll down to the *Camera* section and find the *mqtt* section. Change it as shown below. If there is no such section, then add it right after *videoanalysis*.  
+Пролистайте до раздела *Camera* и найдите раздел *mqtt*. Измините его как показано ниже. Если такого раздела нет? то добавьте его сразу за разделом *videoanalysis*.  
 
 ```
 "mqtt": {
@@ -101,19 +101,10 @@ Scroll down to the *Camera* section and find the *mqtt* section. Change it as sh
 },
 ```
 
-Now add the following line right before *videoConfig*:  
+Теперь добавьте следующую строку сразу после строки *videoConfig*:  
 
 `"doorbell": true,`
 
-**Do not forget to provide the correct MQTT broker username and password in the firmware.**.  
+**Не забудьте указать имя и пароль MQTT пользователя, созданного ранее, в прошивке.**.  
 
-DONE.  
-
-## Support the author
-
-If you like what I am doing, you can support me using one of the links below:  
-
-**BuyMeACoffee**: https://buymeacoffee.com/dronetales  
-**Boosty**: https://boosty.to/drone_tales/donate  
-**PayPal**: mike@btframework.com  
-
+ГОТОВО.  
